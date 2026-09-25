@@ -1,0 +1,11 @@
+{
+  // Static site served by Cloudflare Workers (assets only, no server code).
+  // Every push to `main` on GitHub rebuilds and deploys via Workers Builds.
+  "name": "timelessblur-site",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

@@ -1,0 +1,4 @@
+# Sight word data for the iOS app: short cache so edits show up within minutes.
+/sightwords/*
+  Cache-Control: public, max-age=300
+  Access-Control-Allow-Origin: *
