@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-09-30",
   "lists": [
     {
       "id": "dolch-pre-primer",
@@ -13,6 +13,12 @@
       "name": "Dolch Primer",
       "wordCount": 52,
       "url": "https://timelessblur.com/sightwords/list/dolch-primer.json"
+    },
+    {
+      "id": "list-5",
+      "name": "List 5",
+      "wordCount": 5,
+      "url": "https://timelessblur.com/sightwords/list/list-5.json"
     }
   ]
 }
