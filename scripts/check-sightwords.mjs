@@ -26,6 +26,10 @@ for (const entry of index?.lists ?? []) {
   if (!Array.isArray(list.words) || list.words.length === 0) errors.push(`${file}: "words" must be a non-empty array`);
   else if (entry.wordCount !== list.words.length) errors.push(`${entry.id}: wordCount is ${entry.wordCount} but file has ${list.words.length} words`);
 }
+// The index must stay in alphabetical order by name ("List 2" before "List 10").
+const names = (index?.lists ?? []).map((l) => l.name);
+const sorted = [...names].sort((a, b) => a.localeCompare(b, "en", { numeric: true, sensitivity: "base" }));
+if (names.join("|") !== sorted.join("|")) errors.push(`list.json isn't in alphabetical order by name; expected: ${sorted.join(", ")}`);
 for (const f of files) if (!listed.has(f)) errors.push(`${f} exists but isn't in list.json`);
 
 if (errors.length) { console.error("Sight word check failed:\n  " + errors.join("\n  ")); process.exit(1); }
