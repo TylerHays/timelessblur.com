@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SightWord Practice</title>
+<meta name="description" content="SightWord Practice — flash cards for the sight words your child is learning. Help, word lists, and privacy." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --ink: #f4f3ef;
+    --body: #c9c8cf;
+    --muted: #6f6e76;
+    --accent: #8ab4ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(138,180,255,0.07), transparent 70%);
+    pointer-events: none;
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(138,180,255,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .home {
+    border-bottom: none;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    margin-top: 3rem;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-top: 0.5rem;
+  }
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p, ul { margin-top: 0.9rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-top: 0.4rem; }
+  strong { color: var(--ink); font-weight: 600; }
+
+
+  .summary {
+    margin-top: 2rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(138,180,255,0.2);
+    border-radius: 10px;
+    background: rgba(138,180,255,0.04);
+  }
+  .summary p:first-child { margin-top: 0; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(111,110,118,0.3);
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); border-bottom-color: transparent; }
+  footer a:hover { color: var(--accent); }
+
+  code {
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.875em;
+    color: var(--ink);
+    background: rgba(138,180,255,0.1);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+  pre {
+    margin-top: 1.1rem;
+    padding: 1rem 1.1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(111,110,118,0.25);
+    border-radius: 8px;
+    /* The sample is the one thing here with lines that cannot wrap, so it
+       scrolls on its own rather than taking the page with it. */
+    overflow-x: auto;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--body);
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="home" href="/">timelessblur</a>
+
+    <p class="eyebrow">iPhone &amp; iPad</p>
+    <h1>SightWord Practice</h1>
+
+    <div class="summary">
+      <p>Flash cards for the sight words your child is learning this week. Type in the list the teacher sent home and practice together — your child reads the word, you tap whether they got it.</p>
+    </div>
+
+    <!-- App Store link goes here once the app is approved. Something like:
+         <p><a href="https://apps.apple.com/app/idXXXXXXXXX">Download on the App Store</a></p>
+         Left out rather than stubbed, so there is never a dead link on the page. -->
+
+    <h2>Getting words in</h2>
+
+    <p>There are three ways, and most people only ever need the first.</p>
+
+    <ul>
+      <li><strong>Type them in.</strong> New List, name it, then add the words one at a time. Quickest for the ten or twenty words that come home on a Monday.</li>
+      <li><strong>Download a ready-made list.</strong> Import → Download a List has the classic Dolch sets and a few others, so you can start without typing anything.</li>
+      <li><strong>Write one on a computer.</strong> Easier for a long list, or one you already have in an email — see <a href="/sightwords/make-your-own">make your own word list</a>.</li>
+    </ul>
+
+    <h2>Sharing a list with another parent</h2>
+
+    <p>Open the list and tap <em>Share This List</em>. Send it however you like — Messages, Mail, AirDrop. They tap it and it opens straight into their app, which shows them what it will add before adding anything.</p>
+
+    <p>A shared list carries only the words. Your child's practice history is never part of it — the format the app sends has nowhere to put one, so it cannot travel by accident.</p>
+
+    <h2>Practice</h2>
+
+    <p>Before a session you can choose how long it runs and how hard it leans on the words that get missed.</p>
+
+    <ul>
+      <li><strong>One pass</strong> goes through every word once and finishes. <strong>Keep going</strong> carries on until you stop.</li>
+      <li><strong>Emphasis</strong> decides how much more often a missed word comes round. Set it to even and every word is equally likely.</li>
+      <li>Each word quietly remembers how it has gone, so you can see what is sticking. There are no points, badges or streaks.</li>
+    </ul>
+
+    <h2>Common questions</h2>
+
+    <p><strong>Will importing overwrite the list I already have?</strong> No. If a list arrives with a name you already use, the app offers to merge the two and keeps the practice history on every word you already had. Words you already have are skipped rather than reset.</p>
+
+    <p><strong>Do my lists appear on my other devices?</strong> Yes, through your own private iCloud account, as long as both devices are signed into the same one. We have no access to it. Sign out of iCloud and the app carries on with whatever is already on the device.</p>
+
+    <p><strong>Can I edit or rename a list later?</strong> Yes — the name, the words, all of it, whenever the list changes.</p>
+
+    <p><strong>My child finds the movement distracting.</strong> Turn on Reduce Motion in iOS Settings under Accessibility → Motion and the cards cross-fade instead of sliding, and celebrations are turned off. You can also set the card animation to None in the app's own Settings, and turn celebrating off there.</p>
+
+    <p><strong>Does it collect anything about my child?</strong> No. No accounts, no ads, no analytics, nothing sent anywhere. The <a href="/privacy">privacy policy</a> says so in more detail, and says what it would say if that ever changed.</p>
+
+    <h2>Something not working?</h2>
+
+    <p>Email <a href="mailto:hello@timelessblur.com">hello@timelessblur.com</a>. It reaches a person — there is only one — so saying which device you are on and what you were doing helps a great deal.</p>
+
+    <footer>
+      <a href="/">timelessblur.com</a> · <a href="/sightwords/make-your-own">Make your own list</a> · <a href="/privacy">Privacy</a>
+    </footer>
+  </main>
+</body>
+</html>

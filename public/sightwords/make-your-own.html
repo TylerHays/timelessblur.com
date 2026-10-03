@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Make Your Own Word List — SightWord Practice</title>
+<meta name="description" content="How to write a sight word list on your computer and open it in SightWord Practice." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --ink: #f4f3ef;
+    --body: #c9c8cf;
+    --muted: #6f6e76;
+    --accent: #8ab4ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(138,180,255,0.07), transparent 70%);
+    pointer-events: none;
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(138,180,255,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .home {
+    border-bottom: none;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .eyebrow {
+    margin-top: 3rem;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-top: 0.5rem;
+  }
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p, ul { margin-top: 0.9rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-top: 0.4rem; }
+  strong { color: var(--ink); font-weight: 600; }
+
+
+  .summary {
+    margin-top: 2rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(138,180,255,0.2);
+    border-radius: 10px;
+    background: rgba(138,180,255,0.04);
+  }
+  .summary p:first-child { margin-top: 0; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(111,110,118,0.3);
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); border-bottom-color: transparent; }
+  footer a:hover { color: var(--accent); }
+
+  code {
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.875em;
+    color: var(--ink);
+    background: rgba(138,180,255,0.1);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+  pre {
+    margin-top: 1.1rem;
+    padding: 1rem 1.1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(111,110,118,0.25);
+    border-radius: 8px;
+    /* The sample is the one thing here with lines that cannot wrap, so it
+       scrolls on its own rather than taking the page with it. */
+    overflow-x: auto;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--body);
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="home" href="/">timelessblur</a>
+
+    <p class="eyebrow">SightWord Practice</p>
+    <h1>Make your own word list</h1>
+
+    <div class="summary">
+      <p><strong>The short version:</strong> type the words into a plain text file, one per line, save it with <code>.sightwords</code> on the end, and send it to your phone. Tap it and the app opens it.</p>
+    </div>
+
+    <p>You can type a list straight into the app, and for a handful of words that is usually quicker. This page is for when you would rather type on a proper keyboard — a long list, or one you already have in an email from school.</p>
+
+    <h2>Start from the sample</h2>
+
+    <p>Download <a href="/sightwords/sample/week-5.sightwords" download="Week 5.sightwords">Week 5.sightwords</a>, open it in any text editor — TextEdit, Notepad, anything — and replace the words with yours.</p>
+
+    <pre><code>SightWords: Week 5
+they
+where
+by
+here
+saw</code></pre>
+
+    <p>That is the whole format. The first line names the list. Every line after it is one word.</p>
+
+    <h2>The rules, such as they are</h2>
+
+    <ul>
+      <li><strong>One word per line.</strong> Not commas, not spaces — a new line for each.</li>
+      <li><strong>The first line names the list</strong>, and has to start with <code>SightWords:</code> exactly. Leave it out and the app will ask you to name the list when you import it — nothing is lost either way.</li>
+      <li><strong>Blank lines and stray spaces are fine.</strong> They are ignored.</li>
+      <li><strong>Save it as plain text.</strong> In TextEdit that is Format → Make Plain Text before saving. A Word document will not work.</li>
+      <li><strong>Name the file whatever you like</strong>, but end it with <code>.sightwords</code> so tapping it opens the app.</li>
+    </ul>
+
+    <h2>Getting it onto the phone or iPad</h2>
+
+    <p>Any way you would send yourself a file works. Email it to yourself and tap the attachment. AirDrop it. Drop it in iCloud Drive or Dropbox and open it from the Files app. However it arrives, tapping it opens SightWord Practice, which shows you what it is about to add before adding anything.</p>
+
+    <p>If tapping does not offer the app, use <em>Import → Open a List File</em> inside the app instead and pick the file from there. That route also accepts an ordinary <code>.txt</code> file, so it is the one to use if you would rather not rename anything.</p>
+
+    <h2>If you would rather write JSON</h2>
+
+    <p>You do not need to, and the plain text above is less to get wrong. But the app reads this too, and it is what the Share button produces:</p>
+
+    <pre><code>{
+  "formatVersion": 1,
+  "name": "Week 5",
+  "words": ["they", "where", "by", "here", "saw"]
+}</code></pre>
+
+    <p>There is a copy at <a href="/sightwords/sample/week-5.json" download>week-5.json</a>. One missing comma and the app will refuse it, which is the main reason to stick with plain text.</p>
+
+    <h2>A few things worth knowing</h2>
+
+    <p><strong>Importing never overwrites anything.</strong> Bring in a list whose name matches one you already have and the app offers to merge the two, keeping the practice history on every word you already had. Words you already have are skipped rather than reset.</p>
+
+    <p><strong>Nothing is sent anywhere.</strong> The file is read on your device. It is not uploaded, and we never see it.</p>
+
+    <p><strong>We don't host lists people make.</strong> The lists in the app under <em>Download a List</em> are ones we put there. Yours stays yours — share it with another parent directly, by sending them the file.</p>
+
+    <h2>Sharing one you have already made</h2>
+
+    <p>If the list is already in the app, you do not need any of this. Open it, tap <em>Share This List</em>, and send it however you like — the other parent taps it and it opens straight into their app. A shared list carries only the words, never your child's practice history.</p>
+
+    <footer>
+      <a href="/">timelessblur.com</a> · <a href="/privacy">Privacy</a>
+    </footer>
+  </main>
+</body>
+</html>
