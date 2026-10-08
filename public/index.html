@@ -96,6 +96,41 @@
     .mark .b { animation: none; }
   }
 
+  /* The mark from the app's launch screen, same path and same palette.
+     `pathLength="100"` normalises the curve so the dash lengths below are
+     percentages of the loop rather than user units nobody can reason about. */
+  .glyph {
+    width: clamp(92px, 22vw, 132px);
+    height: auto;
+    display: block;
+    margin: 0 auto 1.6rem;
+    overflow: visible;
+  }
+  .glyph path {
+    fill: none;
+    stroke-width: 26;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .loop { stroke: var(--muted); opacity: 0.16; }
+  .body { stroke: url(#ribbon); stroke-dasharray: 64 36; }
+  .head { stroke: #F7F7F4; stroke-dasharray: 16 84; }
+
+  /* One continuous crawl. The head runs 48 units ahead of the body's start,
+     which puts it at the body's leading edge, and both share a duration so
+     they never drift apart. Slower than the app's: there it plays for two
+     seconds during launch, here it runs for as long as the tab is open. */
+  .body { animation: crawl-body 14s linear infinite; }
+  .head { animation: crawl-head 14s linear infinite; }
+  @keyframes crawl-body {
+    from { stroke-dashoffset: 0; }
+    to   { stroke-dashoffset: -100; }
+  }
+  @keyframes crawl-head {
+    from { stroke-dashoffset: -48; }
+    to   { stroke-dashoffset: -148; }
+  }
+
   .tag {
     margin-top: 1.8rem;
     font-size: clamp(0.7rem, 2.2vw, 0.85rem);
@@ -132,6 +167,10 @@
     color: var(--muted);
   }
 
+  /* The app and the mailbox are different things; without this they read as
+     one three-line block. */
+  .contact { margin-top: 2.2rem; }
+
   .contact a {
     color: var(--muted);
     text-decoration: none;
@@ -146,15 +185,24 @@
   }
 
   /* staggered entrance */
-  .mark, .tag, .rule, .work, .contact {
-    opacity: 0;
-    animation-fill-mode: forwards;
+  /* `both` rather than `opacity: 0` plus `forwards`.
+     Both give the same entrance: during the delay the element holds the
+     keyframe's `from` state, and afterwards it holds `to`. The difference is
+     what happens when the animation never runs at all — an old browser, a
+     renderer that snapshots before animations start, anything that drops CSS
+     animation support. With the opacity on the element the page is simply
+     blank. This way nothing is hidden unless something is there to reveal it. */
+  .glyph, .mark, .tag, .rule, .work, .contact {
+    animation-fill-mode: both;
   }
-  .mark    { animation: rise 1s ease 0.1s forwards; }
-  .tag     { animation: rise 1s ease 0.45s forwards; }
-  .rule    { animation: rise 1s ease 0.6s forwards; }
-  .work    { animation: rise 1s ease 0.75s forwards; }
-  .contact { animation: rise 1s ease 0.95s forwards; }
+  /* The glyph's own opacity rises here; the crawl on its paths is separate and
+     carries on underneath. */
+  .glyph   { animation: rise 1s ease 0.1s forwards; }
+  .mark    { animation: rise 1s ease 0.35s forwards; }
+  .tag     { animation: rise 1s ease 0.6s forwards; }
+  .rule    { animation: rise 1s ease 0.75s forwards; }
+  .work    { animation: rise 1s ease 0.9s forwards; }
+  .contact { animation: rise 1s ease 1.1s forwards; }
 
   /* re-apply drift after entrance for .b */
   .mark .b { animation: drift 6s ease-in-out 1.3s infinite; }
@@ -164,12 +212,40 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mark, .tag, .rule, .work, .contact { opacity: 1; animation: none; }
+    .glyph, .mark, .tag, .rule, .work, .contact { opacity: 1; animation: none; }
+    .body, .head { animation: none; }
+    .body { stroke-dasharray: none; }
+    .head { display: none; }
+    .loop { opacity: 0; }
   }
 </style>
 </head>
 <body>
   <main class="wrap">
+    <svg class="glyph" viewBox="90 139 332 234" role="img"
+         aria-labelledby="glyph-title" focusable="false">
+      <title id="glyph-title">timelessblur</title>
+      <defs>
+        <!-- The app's palette exactly: Logo.cyan, .blue, .violet in LaunchView.
+             userSpaceOnUse so the gradient belongs to the figure rather than to
+             the ribbon — the ribbon changes colour as it travels through it,
+             which is the one thing a stroke gradient can do that follows the
+             shape. -->
+        <linearGradient id="ribbon" gradientUnits="userSpaceOnUse"
+                        x1="106" y1="155" x2="406" y2="357">
+          <stop offset="0" stop-color="#22D3EE"/>
+          <stop offset="0.5" stop-color="#3B82F6"/>
+          <stop offset="1" stop-color="#6366F1"/>
+        </linearGradient>
+      </defs>
+      <!-- The whole loop, barely there. In the app the rest of the figure-8
+           stays dark; this is that. -->
+      <path class="loop" d="M326.7,161.0 L331.5,158.7 L336.5,156.9 L341.6,155.8 L346.8,155.3 L352.1,155.5 L357.4,156.5 L362.7,158.4 L368.0,161.1 L373.2,164.8 L378.3,169.5 L383.2,175.2 L387.8,181.9 L392.0,189.6 L395.8,198.2 L399.1,207.6 L401.8,217.7 L403.9,228.4 L405.3,239.6 L405.9,251.0 L405.9,262.6 L405.1,274.0 L403.6,285.1 L401.4,295.7 L398.6,305.8 L395.3,315.1 L391.4,323.5 L387.1,331.1 L382.5,337.6 L377.6,343.2 L372.5,347.7 L367.3,351.3 L362.0,354.0 L356.6,355.7 L351.3,356.6 L346.1,356.7 L340.9,356.1 L335.8,354.9 L330.9,353.0 L326.0,350.6 L321.4,347.8 L316.8,344.5 L312.5,340.9 L308.2,336.9 L304.1,332.6 L300.2,328.1 L296.3,323.4 L292.6,318.4 L289.0,313.4 L285.5,308.1 L282.1,302.8 L278.7,297.3 L275.5,291.8 L272.3,286.2 L269.1,280.6 L266.0,274.9 L263.0,269.2 L259.9,263.4 L256.9,257.7 L253.8,251.9 L250.8,246.2 L247.8,240.4 L244.7,234.7 L241.5,229.0 L238.4,223.4 L235.2,217.8 L231.9,212.4 L228.5,207.0 L225.0,201.7 L221.5,196.5 L217.8,191.5 L214.1,186.6 L210.2,182.0 L206.2,177.6 L202.0,173.4 L197.7,169.6 L193.3,166.1 L188.7,163.0 L184.0,160.3 L179.1,158.1 L174.1,156.5 L169.0,155.5 L163.7,155.2 L158.5,155.7 L153.1,156.9 L147.8,159.0 L142.5,162.1 L137.3,166.1 L132.3,171.0 L127.5,177.0 L123.0,184.0 L118.9,191.9 L115.3,200.7 L112.1,210.4 L109.6,220.7 L107.7,231.5 L106.5,242.8 L106.0,254.3 L106.3,265.8 L107.2,277.1 L108.9,288.1 L111.3,298.6 L114.3,308.5 L117.8,317.5 L121.7,325.7 L126.1,333.0 L130.8,339.3 L135.8,344.5 L140.9,348.8 L146.2,352.1 L151.5,354.5 L156.9,356.0 L162.2,356.7 L167.4,356.6 L172.6,355.8 L177.6,354.4 L182.5,352.4 L187.3,349.9 L191.9,346.9 L196.4,343.5 L200.7,339.8 L204.9,335.7 L209.0,331.4 L212.9,326.8 L216.7,322.0 L220.4,317.0 L224.0,311.9 L227.5,306.6 L230.9,301.3 L234.2,295.8 L237.4,290.3 L240.6,284.7 L243.7,279.0 L246.8,273.3 L249.9,267.6 L252.9,261.8 L256.0,256.1 L259.0,250.3 L262.0,244.6 L265.1,238.8 L268.2,233.1 L271.3,227.5 L274.5,221.9 L277.8,216.3 L281.1,210.8 L284.5,205.5 L287.9,200.2 L291.5,195.1 L295.2,190.1 L299.0,185.3 L302.9,180.7 L307.7,176.8 L312.4,172.8 L317.2,168.9 L321.9,164.9 Z"/>
+      <!-- The ribbon, and the white head leading it. Two paths rather than one
+           because a stroke gradient cannot run head-to-tail along a dash. -->
+      <path class="body" d="M326.7,161.0 L331.5,158.7 L336.5,156.9 L341.6,155.8 L346.8,155.3 L352.1,155.5 L357.4,156.5 L362.7,158.4 L368.0,161.1 L373.2,164.8 L378.3,169.5 L383.2,175.2 L387.8,181.9 L392.0,189.6 L395.8,198.2 L399.1,207.6 L401.8,217.7 L403.9,228.4 L405.3,239.6 L405.9,251.0 L405.9,262.6 L405.1,274.0 L403.6,285.1 L401.4,295.7 L398.6,305.8 L395.3,315.1 L391.4,323.5 L387.1,331.1 L382.5,337.6 L377.6,343.2 L372.5,347.7 L367.3,351.3 L362.0,354.0 L356.6,355.7 L351.3,356.6 L346.1,356.7 L340.9,356.1 L335.8,354.9 L330.9,353.0 L326.0,350.6 L321.4,347.8 L316.8,344.5 L312.5,340.9 L308.2,336.9 L304.1,332.6 L300.2,328.1 L296.3,323.4 L292.6,318.4 L289.0,313.4 L285.5,308.1 L282.1,302.8 L278.7,297.3 L275.5,291.8 L272.3,286.2 L269.1,280.6 L266.0,274.9 L263.0,269.2 L259.9,263.4 L256.9,257.7 L253.8,251.9 L250.8,246.2 L247.8,240.4 L244.7,234.7 L241.5,229.0 L238.4,223.4 L235.2,217.8 L231.9,212.4 L228.5,207.0 L225.0,201.7 L221.5,196.5 L217.8,191.5 L214.1,186.6 L210.2,182.0 L206.2,177.6 L202.0,173.4 L197.7,169.6 L193.3,166.1 L188.7,163.0 L184.0,160.3 L179.1,158.1 L174.1,156.5 L169.0,155.5 L163.7,155.2 L158.5,155.7 L153.1,156.9 L147.8,159.0 L142.5,162.1 L137.3,166.1 L132.3,171.0 L127.5,177.0 L123.0,184.0 L118.9,191.9 L115.3,200.7 L112.1,210.4 L109.6,220.7 L107.7,231.5 L106.5,242.8 L106.0,254.3 L106.3,265.8 L107.2,277.1 L108.9,288.1 L111.3,298.6 L114.3,308.5 L117.8,317.5 L121.7,325.7 L126.1,333.0 L130.8,339.3 L135.8,344.5 L140.9,348.8 L146.2,352.1 L151.5,354.5 L156.9,356.0 L162.2,356.7 L167.4,356.6 L172.6,355.8 L177.6,354.4 L182.5,352.4 L187.3,349.9 L191.9,346.9 L196.4,343.5 L200.7,339.8 L204.9,335.7 L209.0,331.4 L212.9,326.8 L216.7,322.0 L220.4,317.0 L224.0,311.9 L227.5,306.6 L230.9,301.3 L234.2,295.8 L237.4,290.3 L240.6,284.7 L243.7,279.0 L246.8,273.3 L249.9,267.6 L252.9,261.8 L256.0,256.1 L259.0,250.3 L262.0,244.6 L265.1,238.8 L268.2,233.1 L271.3,227.5 L274.5,221.9 L277.8,216.3 L281.1,210.8 L284.5,205.5 L287.9,200.2 L291.5,195.1 L295.2,190.1 L299.0,185.3 L302.9,180.7 L307.7,176.8 L312.4,172.8 L317.2,168.9 L321.9,164.9 Z" pathLength="100"/>
+      <path class="head" d="M326.7,161.0 L331.5,158.7 L336.5,156.9 L341.6,155.8 L346.8,155.3 L352.1,155.5 L357.4,156.5 L362.7,158.4 L368.0,161.1 L373.2,164.8 L378.3,169.5 L383.2,175.2 L387.8,181.9 L392.0,189.6 L395.8,198.2 L399.1,207.6 L401.8,217.7 L403.9,228.4 L405.3,239.6 L405.9,251.0 L405.9,262.6 L405.1,274.0 L403.6,285.1 L401.4,295.7 L398.6,305.8 L395.3,315.1 L391.4,323.5 L387.1,331.1 L382.5,337.6 L377.6,343.2 L372.5,347.7 L367.3,351.3 L362.0,354.0 L356.6,355.7 L351.3,356.6 L346.1,356.7 L340.9,356.1 L335.8,354.9 L330.9,353.0 L326.0,350.6 L321.4,347.8 L316.8,344.5 L312.5,340.9 L308.2,336.9 L304.1,332.6 L300.2,328.1 L296.3,323.4 L292.6,318.4 L289.0,313.4 L285.5,308.1 L282.1,302.8 L278.7,297.3 L275.5,291.8 L272.3,286.2 L269.1,280.6 L266.0,274.9 L263.0,269.2 L259.9,263.4 L256.9,257.7 L253.8,251.9 L250.8,246.2 L247.8,240.4 L244.7,234.7 L241.5,229.0 L238.4,223.4 L235.2,217.8 L231.9,212.4 L228.5,207.0 L225.0,201.7 L221.5,196.5 L217.8,191.5 L214.1,186.6 L210.2,182.0 L206.2,177.6 L202.0,173.4 L197.7,169.6 L193.3,166.1 L188.7,163.0 L184.0,160.3 L179.1,158.1 L174.1,156.5 L169.0,155.5 L163.7,155.2 L158.5,155.7 L153.1,156.9 L147.8,159.0 L142.5,162.1 L137.3,166.1 L132.3,171.0 L127.5,177.0 L123.0,184.0 L118.9,191.9 L115.3,200.7 L112.1,210.4 L109.6,220.7 L107.7,231.5 L106.5,242.8 L106.0,254.3 L106.3,265.8 L107.2,277.1 L108.9,288.1 L111.3,298.6 L114.3,308.5 L117.8,317.5 L121.7,325.7 L126.1,333.0 L130.8,339.3 L135.8,344.5 L140.9,348.8 L146.2,352.1 L151.5,354.5 L156.9,356.0 L162.2,356.7 L167.4,356.6 L172.6,355.8 L177.6,354.4 L182.5,352.4 L187.3,349.9 L191.9,346.9 L196.4,343.5 L200.7,339.8 L204.9,335.7 L209.0,331.4 L212.9,326.8 L216.7,322.0 L220.4,317.0 L224.0,311.9 L227.5,306.6 L230.9,301.3 L234.2,295.8 L237.4,290.3 L240.6,284.7 L243.7,279.0 L246.8,273.3 L249.9,267.6 L252.9,261.8 L256.0,256.1 L259.0,250.3 L262.0,244.6 L265.1,238.8 L268.2,233.1 L271.3,227.5 L274.5,221.9 L277.8,216.3 L281.1,210.8 L284.5,205.5 L287.9,200.2 L291.5,195.1 L295.2,190.1 L299.0,185.3 L302.9,180.7 L307.7,176.8 L312.4,172.8 L317.2,168.9 L321.9,164.9 Z" pathLength="100"/>
+    </svg>
     <h1 class="mark"><span class="a">timeless</span><span class="b">blur</span></h1>
     <p class="tag">Software, in motion</p>
     <div class="rule"></div>
