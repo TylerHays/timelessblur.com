@@ -59,6 +59,34 @@
     text-decoration: none;
   }
 
+  /* The App Store block. Prominent on purpose: on the page somebody reaches
+     from a search or from the listing, this is what they came to do. */
+  .store { margin: 2rem 0 0; }
+  .store a,
+  .store .pending {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+  .store a {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .store a:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  /* Until it is approved. Says the same thing without pretending to be a link
+     somewhere — the URL 404s until the app is Ready for Sale. */
+  .store .pending { border: 1px solid var(--muted); color: var(--muted); }
+  .store .note {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
   /* Three phone screenshots, side by side where there is room and wrapping
      where there is not. Width-capped rather than height-capped so they stay
      the same size as each other whatever the aspect ratio of a future shot. */
@@ -181,13 +209,20 @@
       <p>Flash cards for the sight words your child is learning this week. Type in the list the teacher sent home and practice together — your child reads the word, you tap whether they got it.</p>
     </div>
 
-    <!-- ON LAUNCH DAY: delete this line and the one at the end of the block.
-         The id is real; the URL simply 404s until the app is Ready for Sale,
-         which is why the link is not already live. The bare id form is used
-         rather than one with a name slug in it, because the slug changes if the
-         app is ever renamed and this does not.
-    <p><a href="https://apps.apple.com/app/id6813743425">Download on the App Store</a></p>
-         ON LAUNCH DAY: and delete this line. -->
+    <!-- ON LAUNCH DAY: delete the pending block below and uncomment the real
+         one under it. The id is right either way; the URL just 404s until the
+         app is Ready for Sale, and a dead link on the page people reach from a
+         search is worse than an honest "not yet".
+
+         The bare id form is used rather than one carrying a name slug, because
+         the slug follows the app's name and this does not. -->
+    <p class="store">
+      <span class="pending">Coming soon to the App Store</span>
+      <span class="note">Submitted and in review.</span>
+    </p>
+    <!--
+    <p class="store"><a href="https://apps.apple.com/app/id6813743425">Download on the App Store</a></p>
+    -->
 
     <div class="shots">
       <figure>
