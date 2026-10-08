@@ -2,3 +2,17 @@
 /sightwords/*
   Cache-Control: public, max-age=300
   Access-Control-Allow-Origin: *
+
+# The sample word list is meant to be downloaded and then opened in the app.
+#
+# Cloudflare serves an unknown extension with no Content-Type at all, which
+# leaves the browser to guess — and a browser that guesses may render it inline
+# as text or save it under a different name. Either breaks tapping it to open
+# the app, because the app is matched on the `.sightwords` extension.
+#
+# `text/plain` because that is what it is, and `attachment` so it downloads
+# rather than displays. A new sample file needs its own rule: these paths are
+# matched literally, not by extension.
+/sightwords/sample/week-5.sightwords
+  Content-Type: text/plain; charset=utf-8
+  Content-Disposition: attachment
