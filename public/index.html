@@ -112,6 +112,26 @@
     opacity: 0.4;
   }
 
+  .work a {
+    color: var(--fg, inherit);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .work a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .work span {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
   .contact a {
     color: var(--muted);
     text-decoration: none;
@@ -126,14 +146,15 @@
   }
 
   /* staggered entrance */
-  .mark, .tag, .rule, .contact {
+  .mark, .tag, .rule, .work, .contact {
     opacity: 0;
     animation-fill-mode: forwards;
   }
   .mark    { animation: rise 1s ease 0.1s forwards; }
   .tag     { animation: rise 1s ease 0.45s forwards; }
   .rule    { animation: rise 1s ease 0.6s forwards; }
-  .contact { animation: rise 1s ease 0.75s forwards; }
+  .work    { animation: rise 1s ease 0.75s forwards; }
+  .contact { animation: rise 1s ease 0.95s forwards; }
 
   /* re-apply drift after entrance for .b */
   .mark .b { animation: drift 6s ease-in-out 1.3s infinite; }
@@ -143,7 +164,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mark, .tag, .rule, .contact { opacity: 1; animation: none; }
+    .mark, .tag, .rule, .work, .contact { opacity: 1; animation: none; }
   }
 </style>
 </head>
@@ -152,6 +173,10 @@
     <h1 class="mark"><span class="a">timeless</span><span class="b">blur</span></h1>
     <p class="tag">Software, in motion</p>
     <div class="rule"></div>
+    <p class="work">
+      <a href="/sightwords">SightWord Practice</a>
+      <span>Flash cards for the sight words your child is learning</span>
+    </p>
     <p class="contact"><a href="mailto:hello@timelessblur.com">hello@timelessblur.com</a></p>
   </main>
 </body>

@@ -59,6 +59,14 @@
     text-decoration: none;
   }
 
+  .eyebrow a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .eyebrow a:hover { border-color: currentColor; }
+
   .eyebrow {
     margin-top: 3rem;
     font-family: "Space Mono", ui-monospace, monospace;
@@ -144,7 +152,7 @@
   <main class="wrap">
     <a class="home" href="/">timelessblur</a>
 
-    <p class="eyebrow">SightWord Practice</p>
+    <p class="eyebrow"><a href="/sightwords">SightWord Practice</a></p>
     <h1>Make your own word list</h1>
 
     <div class="summary">

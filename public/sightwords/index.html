@@ -59,6 +59,36 @@
     text-decoration: none;
   }
 
+  /* Three phone screenshots, side by side where there is room and wrapping
+     where there is not. Width-capped rather than height-capped so they stay
+     the same size as each other whatever the aspect ratio of a future shot. */
+  .shots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    margin: 2rem 0 2.5rem;
+  }
+  .shots figure {
+    margin: 0;
+    flex: 0 1 200px;
+    max-width: 200px;
+  }
+  .shots img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .shots figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--muted);
+    text-align: center;
+  }
+
   .eyebrow {
     margin-top: 3rem;
     font-family: "Space Mono", ui-monospace, monospace;
@@ -158,6 +188,27 @@
          app is ever renamed and this does not.
     <p><a href="https://apps.apple.com/app/id6813743425">Download on the App Store</a></p>
          ON LAUNCH DAY: and delete this line. -->
+
+    <div class="shots">
+      <figure>
+        <img src="/sightwords/img/word-lists.png" width="460" height="1000"
+             alt="A list of word lists: Kindergarten, Week 5 and Sight Words 1, each showing how many words it holds."
+             loading="lazy" decoding="async">
+        <figcaption>Your lists, in whatever order suits you.</figcaption>
+      </figure>
+      <figure>
+        <img src="/sightwords/img/practice.png" width="460" height="1000"
+             alt="A flash card showing the word and, with Got It Wrong and Got It Right buttons underneath."
+             loading="lazy" decoding="async">
+        <figcaption>One word at a time. You tap how it went.</figcaption>
+      </figure>
+      <figure>
+        <img src="/sightwords/img/session-recap.png" width="460" height="1000"
+             alt="The end of a session, splitting the words into Keep Practicing and Went Well."
+             loading="lazy" decoding="async">
+        <figcaption>At the end, what to work on tomorrow.</figcaption>
+      </figure>
+    </div>
 
     <h2>Getting words in</h2>
 
