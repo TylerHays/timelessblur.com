@@ -119,12 +119,15 @@
      which puts it at the body's leading edge, and both share a duration so
      they never drift apart.
 
+     6s is the app's own lap: `period` in LaunchView.swift. Matched rather than
+     guessed at, so the mark moves at one speed wherever somebody meets it.
+
      Nothing else is drawn. The app leaves the rest of the figure-8 faintly
      visible behind the ribbon; here there is no base path at all, so the loop
      is only ever where the ribbon currently is rather than a shape sitting on
      the page the whole time. */
-  .body { animation: crawl-body 10s linear infinite; }
-  .head { animation: crawl-head 10s linear infinite; }
+  .body { animation: crawl-body 6s linear infinite; }
+  .head { animation: crawl-head 6s linear infinite; }
   @keyframes crawl-body {
     from { stroke-dashoffset: 0; }
     to   { stroke-dashoffset: -100; }
