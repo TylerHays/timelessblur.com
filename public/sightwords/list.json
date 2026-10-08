@@ -1,7 +1,13 @@
 {
   "version": 1,
-  "updated": "2026-10-02",
+  "updated": "2026-10-08",
   "lists": [
+    {
+      "id": "decodable-word-list",
+      "name": "Decodable Word List",
+      "wordCount": 10,
+      "url": "https://timelessblur.com/sightwords/list/decodable-word-list.json"
+    },
     {
       "id": "dolch-pre-primer",
       "name": "Dolch Pre-Primer",
