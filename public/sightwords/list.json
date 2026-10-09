@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "lists": [
     {
       "id": "decodable-word-list",
@@ -49,6 +49,12 @@
       "name": "List 5",
       "wordCount": 5,
       "url": "https://timelessblur.com/sightwords/list/list-5.json"
+    },
+    {
+      "id": "list-6",
+      "name": "List 6",
+      "wordCount": 5,
+      "url": "https://timelessblur.com/sightwords/list/list-6.json"
     }
   ]
 }
