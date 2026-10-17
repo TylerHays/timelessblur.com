@@ -1,5 +1,9 @@
 {
   "version": 1,
-  "default": {},
+  "default": {
+    "answerCooldownSeconds": 0.35,
+    "practiceScreenAwakeSeconds": 150,
+    "configRefreshHours": 24
+  },
   "appVersions": {}
 }

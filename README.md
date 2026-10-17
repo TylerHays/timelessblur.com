@@ -52,9 +52,11 @@ it at launch, at most once a day, and keeps the last good copy for offline launc
 - **Resolved key by key, most specific first**: the app's exact version (`1.1.2`), then
   its major.minor (`1.1`), then `default`, then the value built into the app. A block
   only names what is different; a version with no block gets `default`.
-- **Only name a value you mean to change.** Anything served overrides the app's own
-  default, including a better default shipped in a later release, so don't restate
-  built-in values here "for completeness".
+- **`default` mirrors the app's built-in values**, so every setting is visible here.
+  Anything served overrides the app's own default, including a better default shipped
+  in a later release. So when a release changes a built-in default, put the new value
+  in an `appVersions` block for that release (or in `default` once every running
+  version should have it), or this file's old value wins and the change never lands.
 - **`version` is the format version.** Leave it at `1`. Raising it makes every
   installed app ignore the file.
 - **Keep it small.** When a value is right for everyone, move it into `default` and
