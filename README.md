@@ -14,6 +14,7 @@ public/                      ← everything in here is the website
   sightwords/
     list.json                → /sightwords/list.json        (index of all lists)
     list/<id>.json           → /sightwords/list/<id>.json   (one word list)
+    config.json              → /sightwords/config.json      (app tunables, per version)
 scripts/check-sightwords.mjs ← validates the JSON; runs before every deploy
 wrangler.jsonc               ← Cloudflare config (static assets only, no server code)
 ```
@@ -32,6 +33,39 @@ A new page is just a new `.html` file in `public/`: `public/about.html` is serve
 
 To change a list, edit its words and bump its `version` (and the `updated` date in `list.json`)
 so the app can tell when a cached copy is stale.
+
+## The app config
+
+`public/sightwords/config.json` tunes the app without a release: timings like the
+answer double-tap guard and how long practice keeps the screen awake. The app fetches
+it at launch, at most once a day, and keeps the last good copy for offline launches.
+
+```json
+{
+  "version": 1,
+  "default":     { "practiceScreenAwakeSeconds": 150 },
+  "appVersions": { "1.1":   { "practiceScreenAwakeSeconds": 120 },
+                   "1.1.2": { "answerCooldownSeconds": 0.4 } }
+}
+```
+
+- **Resolved key by key, most specific first**: the app's exact version (`1.1.2`), then
+  its major.minor (`1.1`), then `default`, then the value built into the app. A block
+  only names what is different; a version with no block gets `default`.
+- **Only name a value you mean to change.** Anything served overrides the app's own
+  default, including a better default shipped in a later release, so don't restate
+  built-in values here "for completeness".
+- **`version` is the format version.** Leave it at `1`. Raising it makes every
+  installed app ignore the file.
+- **Keep it small.** When a value is right for everyone, move it into `default` and
+  delete the blocks that only existed to set it. Delete blocks for versions nobody
+  runs any more.
+- Allowed keys and ranges are listed in `scripts/check-sightwords.mjs`, which must
+  match `AppConfig.Tunables` in the app. Unknown keys and non-numbers fail the
+  deploy. Out-of-range values only warn, because the app clamps them.
+- Devices pick up a change within a day, plus the 5-minute cache. A development build
+  can fetch immediately from Settings → Developer → Fetch Now.
+- **Never move this file.** Its address is compiled into every build that ships.
 
 ## Preview locally
 
