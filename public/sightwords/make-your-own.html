@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Make Your Own Word List — SightWord Practice</title>
-<meta name="description" content="How to write a sight word list on your computer and open it in SightWord Practice." />
+<meta name="description" content="Type a sight word list on your computer and download it as a file SightWord Practice can open." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -146,6 +146,59 @@
     line-height: 1.55;
     color: var(--body);
   }
+
+  .maker {
+    margin-top: 2rem;
+    padding: 1.4rem;
+    border: 1px solid rgba(138,180,255,0.2);
+    border-radius: 10px;
+    background: rgba(138,180,255,0.04);
+  }
+  .maker label {
+    display: block;
+    margin-top: 1.1rem;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .maker label:first-child { margin-top: 0; }
+  .maker input, .maker textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font: inherit;
+    /* 16px or more, or iOS Safari zooms the page on focus. */
+    font-size: max(1rem, 16px);
+    color: var(--ink);
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(111,110,118,0.45);
+    border-radius: 6px;
+  }
+  .maker textarea { resize: vertical; line-height: 1.5; }
+  .maker input:focus, .maker textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: transparent;
+  }
+  .maker .hint { margin-top: 0.4rem; font-size: 0.875rem; color: var(--muted); }
+  .maker .count {
+    margin-top: 1rem;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .maker button {
+    margin-top: 0.75rem;
+    padding: 0.7rem 1.3rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .maker button:disabled { opacity: 0.4; cursor: default; }
+  .maker button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -155,11 +208,33 @@
     <p class="eyebrow"><a href="/sightwords">SightWord Practice</a></p>
     <h1>Make your own word list</h1>
 
-    <div class="summary">
-      <p><strong>The short version:</strong> type the words into a plain text file, one per line, save it with <code>.sightwords</code> on the end, and send it to your phone. Tap it and the app opens it.</p>
+    <p>You can type a list straight into the app, and for a handful of words that is usually quicker. This page is for when you would rather type on a proper keyboard — a long list, or one you already have in an email from school.</p>
+
+    <form class="maker" id="maker" novalidate>
+      <label for="list-name">Name of the list</label>
+      <input id="list-name" type="text" placeholder="Week 5" maxlength="100" autocomplete="off" required />
+
+      <label for="list-words">Words</label>
+      <!-- Autocapitalize off: on a phone it would turn every line into "The", "And". -->
+      <textarea id="list-words" rows="10" placeholder="they&#10;where&#10;by&#10;here&#10;saw" autocapitalize="none" autocorrect="off" spellcheck="false" required></textarea>
+      <p class="hint">One per line, or separated by commas. Pasting a list from an email works too.</p>
+
+      <p class="count" id="count" aria-live="polite">No words yet</p>
+
+      <button type="submit" id="download" disabled>Download the list</button>
+    </form>
+
+    <noscript><p><strong>This form needs JavaScript.</strong> Writing the file yourself, below, works without it.</p></noscript>
+
+    <div class="summary" id="next" hidden>
+      <p><strong>Now send it to your phone or iPad</strong> — email it to yourself, AirDrop it, or put it in iCloud Drive. Tap the file there and SightWord Practice opens it, showing you what it is about to add before adding anything. <a href="#getting-it-onto-the-phone">More on that below.</a></p>
     </div>
 
-    <p>You can type a list straight into the app, and for a handful of words that is usually quicker. This page is for when you would rather type on a proper keyboard — a long list, or one you already have in an email from school.</p>
+    <p>The file is made right here in your browser. Nothing you type is sent anywhere.</p>
+
+    <h2>Or write the file yourself</h2>
+
+    <p>Type the words into a plain text file, one per line, save it with <code>.sightwords</code> on the end, and send it to your phone. Tap it and the app opens it.</p>
 
     <h2>Start from the sample</h2>
 
@@ -184,7 +259,7 @@ saw</code></pre>
       <li><strong>Name the file whatever you like</strong>, but end it with <code>.sightwords</code> so tapping it opens the app.</li>
     </ul>
 
-    <h2>Getting it onto the phone or iPad</h2>
+    <h2 id="getting-it-onto-the-phone">Getting it onto the phone or iPad</h2>
 
     <p>Any way you would send yourself a file works. Email it to yourself and tap the attachment. AirDrop it. Drop it in iCloud Drive or Dropbox and open it from the Files app. However it arrives, tapping it opens SightWord Practice, which shows you what it is about to add before adding anything.</p>
 
@@ -218,5 +293,85 @@ saw</code></pre>
       <a href="/">timelessblur.com</a> · <a href="/privacy">Privacy</a>
     </footer>
   </main>
+
+  <script>
+  (function () {
+    var form = document.getElementById("maker");
+    var nameField = document.getElementById("list-name");
+    var wordsField = document.getElementById("list-words");
+    var count = document.getElementById("count");
+    var button = document.getElementById("download");
+    var next = document.getElementById("next");
+
+    // The same words the app would keep. It trims each one, drops blanks, and
+    // treats words differing only in case as the same word, keeping the first.
+    // Commas and tabs split too, since a list pasted from an email or a
+    // spreadsheet rarely arrives one per line.
+    function readWords() {
+      var seen = {};
+      var words = [];
+      var repeats = 0;
+      wordsField.value.split(/[\r\n,;\t]+/).forEach(function (raw) {
+        var word = raw.trim().replace(/\s+/g, " ");
+        if (!word) return;
+        var key = word.toLocaleLowerCase();
+        if (seen[key]) { repeats++; return; }
+        seen[key] = true;
+        words.push(word);
+      });
+      return { words: words, repeats: repeats };
+    }
+
+    function listName() {
+      return nameField.value.trim().replace(/\s+/g, " ");
+    }
+
+    // As the app names a shared file: anything that cannot be in a file name
+    // becomes a space. `.sightwords` is what makes tapping it open the app.
+    function fileName(name) {
+      var safe = name.replace(/[\/:\\]+/g, " ").replace(/\s+/g, " ").trim();
+      return (safe || "Word List") + ".sightwords";
+    }
+
+    function refresh() {
+      var read = readWords();
+      var n = read.words.length;
+      var text = n === 0 ? "No words yet" : n + (n === 1 ? " word" : " words");
+      if (read.repeats > 0) {
+        text += " · " + read.repeats + (read.repeats === 1 ? " repeat" : " repeats") + " left out";
+      }
+      count.textContent = text;
+      button.disabled = n === 0 || !listName();
+    }
+
+    form.addEventListener("input", refresh);
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var read = readWords();
+      var name = listName();
+      if (!name || read.words.length === 0) return;
+
+      // The format the app's own Share button writes (`SharedWordList`). Name
+      // and words only: there is no field a score could go in.
+      var json = JSON.stringify({ formatVersion: 1, name: name, words: read.words }, null, 2) + "\n";
+
+      // octet-stream, not JSON: given a JSON or text type, Safari tacks its own
+      // extension on, and "Week 5.sightwords.json" no longer opens the app.
+      var url = URL.createObjectURL(new Blob([json], { type: "application/octet-stream" }));
+      var link = document.createElement("a");
+      link.href = url;
+      link.download = fileName(name);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+
+      next.hidden = false;
+    });
+
+    refresh();
+  })();
+  </script>
 </body>
 </html>
