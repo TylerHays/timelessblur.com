@@ -86,6 +86,21 @@
     font-size: 0.78rem;
     color: var(--muted);
   }
+  /* A plain text link, not the pill: the beta is the side door, not the
+     thing the page is for. Overrides `.store a`, which styles the button. */
+  .store .note a.beta {
+    display: inline;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: none;
+  }
+  .store .note a.beta:hover { filter: none; transform: none; }
 
   /* Three phone screenshots, side by side where there is room and wrapping
      where there is not. Width-capped rather than height-capped so they stay
@@ -209,16 +224,22 @@
       <p>Flash cards for the sight words your child is learning this week. Type in the list the teacher sent home and practice together — your child reads the word, you tap whether they got it.</p>
     </div>
 
-    <!-- ON LAUNCH DAY: delete the pending block below and uncomment the real
-         one under it. The id is right either way; the URL just 404s until the
-         app is Ready for Sale, and a dead link on the page people reach from a
-         search is worse than an honest "not yet".
+    <!-- ON LAUNCH DAY: delete the pending block below, beta line and all, and
+         uncomment the real one under it. The id is right either way; the URL
+         just 404s until the app is Ready for Sale, and a dead link on the page
+         people reach from a search is worse than an honest "not yet".
+
+         The TestFlight line goes with it. Once the app is in the store a beta
+         link only steers people to the rougher build, and the link can die on
+         its own anyway: builds expire after 90 days and the public link can be
+         full or switched off.
 
          The bare id form is used rather than one carrying a name slug, because
          the slug follows the app's name and this does not. -->
     <p class="store">
       <span class="pending">Coming soon to the App Store</span>
       <span class="note">Submitted and in review.</span>
+      <span class="note">Want it sooner? <a class="beta" href="https://testflight.apple.com/join/gcDwuJ5X">Join the beta on TestFlight</a>. It needs Apple's free TestFlight app, and the link points you to it if you don't have it yet.</span>
     </p>
     <!--
     <p class="store"><a href="https://apps.apple.com/app/id6813743425">Download on the App Store</a></p>
