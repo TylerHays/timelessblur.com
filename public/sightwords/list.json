@@ -9,6 +9,12 @@
       "url": "https://timelessblur.com/sightwords/list/decodable-word-list.json"
     },
     {
+      "id": "decodable-word-list-2",
+      "name": "Decodable Word List 2",
+      "wordCount": 10,
+      "url": "https://timelessblur.com/sightwords/list/decodable-word-list-2.json"
+    },
+    {
       "id": "dolch-pre-primer",
       "name": "Dolch Pre-Primer",
       "wordCount": 40,
