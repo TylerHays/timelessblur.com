@@ -62,18 +62,31 @@
   /* The App Store block. Prominent on purpose: on the page somebody reaches
      from a search or from the listing, this is what they came to do. */
   .store { margin: 2rem 0 0; }
-  .store a {
+  /* Apple's own badge, used as supplied: Apple's rules say not to redraw,
+     recolour or crop it, and to show it at least 40px tall on screen. The
+     black one is Apple's preferred version, and its grey outline keeps it
+     visible on this dark background. */
+  .store .badge {
     display: inline-block;
-    padding: 0.85rem 1.6rem;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--bg);
-    font-weight: 600;
-    transition: filter 0.3s ease, transform 0.3s ease;
+    line-height: 0;
+    border: none;
+    transition: transform 0.3s ease;
   }
-  .store a:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .store .badge:hover { transform: translateY(-1px); }
+  .store .badge img { height: 52px; width: auto; }
+  /* The beta is the side door, not what the page is for: a line of small
+     text, not a second button. */
+  .store .beta {
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .store .beta a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    border-bottom: none;
+  }
 
   /* Three phone screenshots, side by side where there is room and wrapping
      where there is not. Width-capped rather than height-capped so they stay
@@ -198,8 +211,18 @@
     </div>
 
     <!-- The bare id form rather than one carrying a name slug, because the slug
-         follows the app's name and this does not. -->
-    <p class="store"><a href="https://apps.apple.com/app/id6813743425">Download on the App Store</a></p>
+         follows the app's name and this does not.
+
+         The TestFlight link can stop working on its own: each build expires
+         after 90 days, and the public link can fill up or be switched off.
+         When there is no open beta, delete the line rather than leave a
+         dead link. -->
+    <div class="store">
+      <a class="badge" href="https://apps.apple.com/app/id6813743425">
+        <img src="/sightwords/img/download-on-the-app-store.svg" width="156" height="52" alt="Download on the App Store">
+      </a>
+      <p class="beta">Want new versions early? <a href="https://testflight.apple.com/join/gcDwuJ5X">Join the beta on TestFlight</a>. It needs Apple's free TestFlight app.</p>
+    </div>
 
     <div class="shots">
       <figure>
