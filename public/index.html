@@ -190,35 +190,25 @@
     border-color: var(--accent);
   }
 
-  /* staggered entrance */
-  /* `both` rather than `opacity: 0` plus `forwards`.
-     Both give the same entrance: during the delay the element holds the
-     keyframe's `from` state, and afterwards it holds `to`. The difference is
-     what happens when the animation never runs at all — an old browser, a
-     renderer that snapshots before animations start, anything that drops CSS
-     animation support. With the opacity on the element the page is simply
-     blank. This way nothing is hidden unless something is there to reveal it. */
-  .glyph, .mark, .tag, .rule, .work, .contact {
-    animation-fill-mode: both;
-  }
-  /* The glyph's own opacity rises here; the crawl on its paths is separate and
-     carries on underneath. */
-  .glyph   { animation: rise 1s ease 0.1s forwards; }
-  .mark    { animation: rise 1s ease 0.35s forwards; }
-  .tag     { animation: rise 1s ease 0.6s forwards; }
-  .rule    { animation: rise 1s ease 0.75s forwards; }
-  .work    { animation: rise 1s ease 0.9s forwards; }
-  .contact { animation: rise 1s ease 1.1s forwards; }
+  /* Entrance: the whole page fades in once, as one thing.
+     It used to rise in six steps over two seconds, and with the fonts
+     swapping in partway through it read as things flashing on one by one.
+     Opacity only, no movement — the logo's crawl is the motion on this page.
 
-  /* re-apply drift after entrance for .b */
-  .mark .b { animation: drift 6s ease-in-out 1.3s infinite; }
+     `both` rather than `opacity: 0` plus `forwards`: if the animation never
+     runs at all — an old browser, a renderer that snapshots before animations
+     start — the page is shown rather than left blank. */
+  .wrap { animation: appear 0.8s ease 0.15s both; }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* drift starts once the page has settled */
+  .mark .b { animation: drift 6s ease-in-out 1s infinite; }
+
+  @keyframes appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .glyph, .mark, .tag, .rule, .work, .contact { opacity: 1; animation: none; }
+    .wrap { animation: none; }
     .body, .head { animation: none; }
     .body { stroke-dasharray: none; }
     .head { display: none; }
