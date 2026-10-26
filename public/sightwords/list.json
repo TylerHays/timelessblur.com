@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-20",
+  "updated": "2026-10-26",
   "lists": [
     {
       "id": "decodable-word-list",
@@ -19,6 +19,12 @@
       "name": "Decodable Word List 3",
       "wordCount": 10,
       "url": "https://timelessblur.com/sightwords/list/decodable-word-list-3.json"
+    },
+    {
+      "id": "decodable-word-list-4",
+      "name": "Decodable Word List 4",
+      "wordCount": 12,
+      "url": "https://timelessblur.com/sightwords/list/decodable-word-list-4.json"
     },
     {
       "id": "dolch-pre-primer",
