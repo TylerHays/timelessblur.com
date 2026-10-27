@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What's New — SightWord Practice</title>
+<meta name="description" content="What changed in each version of SightWord Practice." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<!--
+  From 1.2 the app links here from Settings and from its own What's New sheet
+  (WhatsNew.releaseNotesAddress), so this address is compiled into every build
+  that ships. Never move it; redirect instead.
+
+  A section for every release, newest first, added when the release goes live
+  and not before — an entry here for a build still in review announces features
+  nobody can get yet.
+-->
+
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --ink: #f4f3ef;
+    --body: #c9c8cf;
+    --muted: #6f6e76;
+    --accent: #8ab4ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(138,180,255,0.07), transparent 70%);
+    pointer-events: none;
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 5rem;
+  }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(138,180,255,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  .home {
+    border-bottom: none;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .eyebrow a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .eyebrow a:hover { border-color: currentColor; }
+
+  .eyebrow {
+    margin-top: 3rem;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-top: 0.5rem;
+  }
+
+  .release {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(111,110,118,0.3);
+  }
+  .release:first-of-type { border-top: none; padding-top: 0; }
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: var(--ink);
+  }
+
+  .date {
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  p, ul { margin-top: 0.9rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin-top: 0.5rem; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(111,110,118,0.3);
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); border-bottom-color: transparent; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="home" href="/">timelessblur</a>
+
+    <p class="eyebrow"><a href="/sightwords">SightWord Practice</a></p>
+    <h1>What's new</h1>
+
+    <p>What changed in each version, newest first. Your iPhone or iPad usually updates the app on its own; to check which version you have, open the app and look at the bottom of Settings.</p>
+
+    <section class="release" id="1.1">
+      <h2>Version 1.1</h2>
+
+      <ul>
+        <li><strong>See which way each word is going.</strong> A green arrow beside a word means it has been going better lately, an orange one worse — so a word missed all last week and right every time since no longer looks the same as one that is always shaky.</li>
+        <li><strong>The screen stays on during practice.</strong> A child sounding out a word is not touching the screen, and it used to dim mid-word. It now stays on while a card is up, and goes back to normal a few minutes after the last tap.</li>
+        <li><strong>Download several lists at once.</strong> Tap <em>Select</em> in <em>Download a List</em>, pick as many as you want, and they arrive together. A list you already have only gains the words it was missing, and keeps every score.</li>
+        <li><strong>Start over.</strong> Settings can clear every word's practice record, keeping the lists and the words themselves.</li>
+        <li><strong>No celebration for a session that went badly.</strong> Set to celebrate every word they get right, it used to throw fireworks however the session had gone. It now waits for a session that earned it, and the bar for that can be set in Settings.</li>
+        <li><strong>Fixes.</strong> A crash that could happen when leaving a screen.</li>
+      </ul>
+    </section>
+
+    <section class="release" id="1.0">
+      <h2>Version 1.0</h2>
+
+      <p>The first release.</p>
+
+      <ul>
+        <li><strong>Start right away</strong> with the Dolch Pre-Primer and Primer lists, built in. One tap adds them — no typing and no internet needed.</li>
+        <li><strong>Make your own lists</strong> of the words your child is working on, in the app or on a computer with <a href="/sightwords/make-your-own">make your own word list</a>.</li>
+        <li><strong>Practice together,</strong> one list or several at once, and see at the end of each session which words went well and which need another night.</li>
+        <li><strong>Download a list</strong> from the ones published on this site.</li>
+        <li><strong>Share a list</strong> with another parent. Only the words go — never your child's practice history.</li>
+        <li><strong>Celebrate</strong> a good session with confetti or fireworks, or turn it off.</li>
+        <li><strong>Your lists follow you</strong> to your other devices through your own iCloud. We never see them.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <a href="/">timelessblur.com</a> · <a href="/sightwords">SightWord Practice</a> · <a href="/privacy">Privacy</a>
+    </footer>
+  </main>
+</body>
+</html>

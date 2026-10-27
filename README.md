@@ -69,6 +69,16 @@ it at launch, at most once a day, and keeps the last good copy for offline launc
   can fetch immediately from Settings → Developer → Fetch Now.
 - **Never move this file.** Its address is compiled into every build that ships.
 
+## Release notes
+
+`public/sightwords/whats-new.html` has a section for every version of the app,
+newest first. Add one when a release goes live on the App Store, not when it is
+submitted — before then it announces features nobody can get.
+
+- This is the full record. The app shows its own shorter What's New after an
+  update, written in the app; the two are not meant to match.
+- From 1.2 the app links here from Settings, so **never move this page**. Redirect instead.
+
 ## Preview locally
 
 ```
