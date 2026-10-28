@@ -40,6 +40,9 @@ const TUNABLES = {
   answerCooldownSeconds: [0, 2],
   practiceScreenAwakeSeconds: [0, 600],
   configRefreshHours: [1, 48],
+  listenAndPickWordPauseSeconds: [0, 3],
+  // A switch: 1 on, 0 off.
+  speechEnabled: [0, 1],
 };
 const warnings = [];
 const checkBlock = (where, block) => {

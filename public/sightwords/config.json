@@ -3,7 +3,13 @@
   "default": {
     "answerCooldownSeconds": 0.35,
     "practiceScreenAwakeSeconds": 150,
-    "configRefreshHours": 24
+    "configRefreshHours": 24,
+    "listenAndPickWordPauseSeconds": 0.7,
+    "speechEnabled": 1
   },
-  "appVersions": {}
+  "appVersions": {
+    "1.2": {
+      "speechEnabled": 1
+    }
+  }
 }
