@@ -43,6 +43,7 @@ const TUNABLES = {
   listenAndPickWordPauseSeconds: [0, 3],
   // A switch: 1 on, 0 off.
   speechEnabled: [0, 1],
+  speechRate: [0.4, 1],
 };
 const warnings = [];
 const checkBlock = (where, block) => {

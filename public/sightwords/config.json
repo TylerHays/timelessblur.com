@@ -5,7 +5,8 @@
     "practiceScreenAwakeSeconds": 150,
     "configRefreshHours": 24,
     "listenAndPickWordPauseSeconds": 0.7,
-    "speechEnabled": 1
+    "speechEnabled": 1,
+    "speechRate": 0.7
   },
   "appVersions": {
     "1.2": {
