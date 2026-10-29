@@ -88,9 +88,9 @@
     border-bottom: none;
   }
 
-  /* Three phone screenshots, side by side where there is room and wrapping
-     where there is not. Width-capped rather than height-capped so they stay
-     the same size as each other whatever the aspect ratio of a future shot. */
+  /* Four phone screenshots: one row where there is room, two by two on a
+     phone. Width-capped rather than height-capped so they stay the same size
+     as each other whatever the aspect ratio of a future shot. */
   .shots {
     display: flex;
     flex-wrap: wrap;
@@ -100,8 +100,8 @@
   }
   .shots figure {
     margin: 0;
-    flex: 0 1 200px;
-    max-width: 200px;
+    flex: 0 1 150px;
+    max-width: 150px;
   }
   .shots img {
     width: 100%;
@@ -233,9 +233,15 @@
       </figure>
       <figure>
         <img src="/sightwords/img/practice.png" width="460" height="1000"
-             alt="A flash card showing the word and, with Got It Wrong and Got It Right buttons underneath."
+             alt="A flash card showing the word the, with a speaker button on the card and Got It Wrong and Got It Right buttons underneath."
              loading="lazy" decoding="async">
         <figcaption>One word at a time. You tap how it went.</figcaption>
+      </figure>
+      <figure>
+        <img src="/sightwords/img/listen-and-pick.png" width="460" height="1000"
+             alt="Listen &amp; Pick: a Hear It Again button above four word tiles, like, look, go and the."
+             loading="lazy" decoding="async">
+        <figcaption>Listen &amp; Pick: hear a word, find it among four.</figcaption>
       </figure>
       <figure>
         <img src="/sightwords/img/session-recap.png" width="460" height="1000"
@@ -271,6 +277,8 @@
       <li>Each word quietly remembers how it has gone, so you can see what is sticking. There are no points, badges or streaks.</li>
     </ul>
 
+    <p><strong>Hearing the words.</strong> Tap the speaker on a card and the word is said out loud. Or play <em>Listen &amp; Pick</em> from a list: the app says a word and your child finds it among four. Finding it on the first tap counts as right, and anything else as wrong, in the same record the flash cards keep. Settings lets you choose the voice, and points to the better ones iOS can download for free.</p>
+
     <h2>Common questions</h2>
 
     <p><strong>Will importing overwrite the list I already have?</strong> No. If a list arrives with a name you already use, the app offers to merge the two and keeps the practice history on every word you already had. Words you already have are skipped rather than reset.</p>
@@ -280,6 +288,8 @@
     <p><strong>Can I edit or rename a list later?</strong> Yes — the name, the words, all of it, whenever the list changes.</p>
 
     <p><strong>My child finds the movement distracting.</strong> Turn on Reduce Motion in iOS Settings under Accessibility → Motion and the cards cross-fade instead of sliding, and celebrations are turned off. You can also set the card animation to None in the app's own Settings, and turn celebrating off there.</p>
+
+    <p><strong>The speaker gives the answer away.</strong> Turn off <em>Speaker Button on Cards</em> in the app's Settings. Listen &amp; Pick still says its words, because that is the game.</p>
 
     <p><strong>Does it collect anything about my child?</strong> No. No accounts, no ads, no analytics, nothing sent anywhere. The <a href="/privacy">privacy policy</a> says so in more detail, and says what it would say if that ever changed.</p>
 
