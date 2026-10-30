@@ -6,7 +6,7 @@
     "configRefreshHours": 24,
     "listenAndPickWordPauseSeconds": 0.7,
     "speechEnabled": 1,
-    "speechRate": 0.7
+    "speechRate": 0.4
   },
   "appVersions": {
     "1.2": {
