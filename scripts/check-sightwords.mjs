@@ -44,6 +44,10 @@ const TUNABLES = {
   // A switch: 1 on, 0 off.
   speechEnabled: [0, 1],
   speechRate: [0.4, 1],
+  // Multiples of the practice trail's height. The ranges meet at 1, so the
+  // tortoise can never be served to shrink.
+  practiceTortoiseSmallest: [0.3, 1],
+  practiceTortoiseLargest: [1, 2],
 };
 const warnings = [];
 const checkBlock = (where, block) => {

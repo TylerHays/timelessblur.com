@@ -6,7 +6,9 @@
     "configRefreshHours": 24,
     "listenAndPickWordPauseSeconds": 0.7,
     "speechEnabled": 1,
-    "speechRate": 0.4
+    "speechRate": 0.4,
+    "practiceTortoiseSmallest": 0.5,
+    "practiceTortoiseLargest": 2
   },
   "appVersions": {
     "1.2": {
