@@ -50,7 +50,7 @@ const TUNABLES = {
   practiceTortoiseLargest: [1, 2],
   // Little turtles at the end of a perfect session; fewer right is fewer.
   // 0 turns the burst off.
-  practiceTurtleBurst: [0, 60],
+  practiceTurtleBurst: [0, 100],
 };
 const warnings = [];
 const checkBlock = (where, block) => {
