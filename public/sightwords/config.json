@@ -8,7 +8,8 @@
     "speechEnabled": 1,
     "speechRate": 0.4,
     "practiceTortoiseSmallest": 0.5,
-    "practiceTortoiseLargest": 2
+    "practiceTortoiseLargest": 2,
+    "practiceTurtleBurst": 20
   },
   "appVersions": {
     "1.2": {

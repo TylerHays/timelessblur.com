@@ -48,6 +48,9 @@ const TUNABLES = {
   // tortoise can never be served to shrink.
   practiceTortoiseSmallest: [0.3, 1],
   practiceTortoiseLargest: [1, 2],
+  // Little turtles at the end of a perfect session; fewer right is fewer.
+  // 0 turns the burst off.
+  practiceTurtleBurst: [0, 60],
 };
 const warnings = [];
 const checkBlock = (where, block) => {
